@@ -49,7 +49,8 @@ router.get("/", async(req, res) => {
 router.get("/id/:_id", async(req, res) => {
     console.log("LO QUE ME TRAE req.params._id ES", req.params._id)
     try {
-        const findTaskbyId = await Task.findById({id:req.params._id});
+        const id=req.params._id;
+        const findTaskbyId = await Task.findById({id});
         console.log("LO QUE ME TRAE findTaskbyId ES:",findTaskbyId)
         res
             .status(201)
@@ -61,22 +62,12 @@ router.get("/id/:_id", async(req, res) => {
             .send({ message: "There was a problem trying to get a task" });
     }
 });
-/*EJEMPLO
-async getByID (req, res) {
-    try {
-      const id = req.params._id;
-      const task = await Task.findById(id);
-      res.json(task)
-    } catch (error) {
-        console.log(error)
-    }
-  }*/
-
 
 //MARCAR TAREA COMO COMPLETADA-OK POSTMAN
 router.put("/markAsCompleted/:_id", async(req, res) => {
     try {
-        const taskCompleted = await Task.updateOne({id:req.params._id});
+        const id=req.params._id;
+        const taskCompleted = await Task.updateOne({id});
         res
             .status(201)
             .send(taskCompleted);
@@ -92,7 +83,8 @@ router.put("/markAsCompleted/:_id", async(req, res) => {
 //MODIFICAR TITULO -OK POSTMAN
 router.put("/id/:_id", async(req, res) => {
     try {
-        const updateTitle = await Task.updateOne({id:req.params._id});
+        const id=req.params._id;
+        const updateTitle = await Task.updateOne({id});
         res
             .status(201)
             .send(updateTitle);
@@ -108,7 +100,8 @@ router.put("/id/:_id", async(req, res) => {
 //ELIMINAR TAREA-OK POSTMAN
 router.delete("/id/:_id", async(req, res) => {
     try {
-        const deleteTask = await Task.deleteOne({id:req.params._id});
+        const id=req.params._id;
+        const deleteTask = await Task.deleteOne({id});
         console.log(deleteTask)
         res
             .status(201)
