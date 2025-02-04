@@ -45,7 +45,7 @@ router.get("/", async(req, res) => {
     }
 });
 
-//TRAER UNA TAREA POR ID****ERROR****
+//TRAER UNA TAREA POR ID
 router.get("/id/:_id", async(req, res) => {
     console.log("LO QUE ME TRAE req.params._id ES", req.params._id)
     try {
