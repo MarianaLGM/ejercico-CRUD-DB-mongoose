@@ -49,12 +49,12 @@ router.get("/", async(req, res) => {
 router.get("/id/:_id", async(req, res) => {
     console.log("LO QUE ME TRAE req.params._id ES", req.params._id)
     try {
-        const id=req.params._id;
-        const findTaskbyId = await Task.findById({id});
+        const id=req.params.id;
+        const findTaskbyId = await Task.find({id});
         console.log("LO QUE ME TRAE findTaskbyId ES:",findTaskbyId)
         res
             .status(201)
-            .send(findTaskbyId);
+            .json(findTaskbyId);
     } catch (error) {
         console.error("el error es:",error);
         res
