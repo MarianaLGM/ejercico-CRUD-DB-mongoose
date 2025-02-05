@@ -7,13 +7,12 @@ En este caso creamos un archivo llamado Task.js que contendrá nuestro modelo de
 De esta forma tendremos una estructura que nos permitirá el uso de operaciones CRUD (Create, Read, Update, Delete) 
 que pueden realizarse en la base de datos.*/
 
-
 const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema({
     title: String,
     completed: Boolean
-}, { timestamps: true });
+}, { timestamps: true });//gracias a timestamps se genenera la fecha de creción y de actualización
 
 const Task = mongoose.model("Task", TaskSchema);
 

@@ -1,9 +1,10 @@
 /*PASO 2: Conexión DB
 Después creamos la conexión de la base de datos a Mongo Atlas.
 Para ello un archivo .env que contiene url con la conexión a Mongo Atlas. 
-Después creamos la carpeta config y dentro de ello el archivo config.js con el código que necesitamos para la conexión a la base de datos.*/
-
-
+Después creamos la carpeta config y dentro de ello el archivo config.js con el código que necesitamos para la conexión a la base de datos.
+//CONTROLADORES, para ello crearíamos una capeta "CONTROLLERS" y dentro un archivo "controllers.js" ahí vamos a pegar los metodos, de esa manera 
+en ruta me quedan las rutas
+*/
 const mongoose = require("mongoose");
 require("dotenv").config();
 

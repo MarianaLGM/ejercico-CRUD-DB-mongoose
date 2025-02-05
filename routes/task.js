@@ -18,7 +18,7 @@ const Task = require("../models/Task.js")//IMPORTANTE el nombre de MODELS Siempr
 //CREAR TAREA-OK POSTMAN
 router.post("/create", async(req, res) => {
     try {
-        const createTask = await Task.create(req.body);    
+        const createTask = await Task.create(req.body);  //también se puede poner {...req.body, completed:false} para que por defecto sea false  
         res
             .status(201)
             .send(createTask);
@@ -66,10 +66,13 @@ router.get("/id/:_id", async(req, res) => {
 //MARCAR TAREA COMO COMPLETADA-OK POSTMAN
 router.put("/markAsCompleted/:_id", async(req, res) => {
     try {
-        const id=req.params._id;
-        const taskCompleted = await Task.updateOne({id});
+        const taskCompleted = await Task.updateOne(
+            req.params._id,
+            {completed:true},
+            {new:true}
+        )
         res
-            .status(201)
+            .status(200)
             .send(taskCompleted);
     } catch (error) {
         console.error(error);
@@ -83,8 +86,11 @@ router.put("/markAsCompleted/:_id", async(req, res) => {
 //MODIFICAR TITULO -OK POSTMAN
 router.put("/id/:_id", async(req, res) => {
     try {
-        const id=req.params._id;
-        const updateTitle = await Task.updateOne({id});
+        const updateTitle = await Task.updateOne(
+                req.params._id,
+                {title:req.body.title},//le pedimos por el req.body al usuario del nuevo título
+                {new:true}//me dice que la tarea se ha actualizado
+        );
         res
             .status(201)
             .send(updateTitle);
@@ -104,7 +110,7 @@ router.delete("/id/:_id", async(req, res) => {
         const deleteTask = await Task.deleteOne({id});
         console.log(deleteTask)
         res
-            .status(201)
+            .status(200)
             .send({ message: `The task was deleted` });
     } catch (error) {
         console.error(error);

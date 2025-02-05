@@ -4,6 +4,7 @@
     Instalamos express para crear el servidor, mongoose para la conexión a la base de datos y dotenv para poder usar las variables de entorno.
         -npm init -y
         -npm i express mongoose dotenv
+        -npm install mongodb
     -crearemos el .gitignore*/
 
 const express = require("express");
