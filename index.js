@@ -9,8 +9,11 @@
 
 const express = require("express");
 const app = express();
-const PORT = 8080;
 const routes = require("./routes");
+const dotenv= require("dotenv");
+dotenv.config()
+const PORT = process.env.PORT;
+console.log(PORT);
 
 //PASO 2_BIS: Nos importaremos dicha conexión en index.js. 
 const { dbConnection } = require("./config/config");
